@@ -37,6 +37,6 @@ char *get_path(char *cmd);
 int check_builtins(char **args, char *line, int *status);
 
 /* execute.c */
-void execute_process(char *prog_name, char *cmd_path, char **args, int *status);
+void execute_process(char *name, char *path, char **args, int *stat);
 
 #endif
