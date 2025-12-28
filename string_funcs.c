@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _strlen - returns length of string
+ * _strlen - returns the length of a string
  * @s: string
  * Return: length
  */
@@ -17,15 +17,17 @@ int _strlen(char *s)
 }
 
 /**
- * _strcpy - copies string
+ * _strcpy - copies the string pointed to by src
  * @dest: destination
  * @src: source
- * Return: dest
+ * Return: pointer to dest
  */
 char *_strcpy(char *dest, char *src)
 {
 	int i = 0;
 
+	if (!src)
+		return (dest);
 	while (src[i])
 	{
 		dest[i] = src[i];
@@ -39,7 +41,7 @@ char *_strcpy(char *dest, char *src)
  * _strcat - concatenates two strings
  * @dest: destination
  * @src: source
- * Return: dest
+ * Return: pointer to dest
  */
 char *_strcat(char *dest, char *src)
 {
@@ -59,25 +61,24 @@ char *_strcat(char *dest, char *src)
 
 /**
  * _strdup - duplicates a string
- * @str: string
- * Return: pointer to new string
+ * @str: string to duplicate
+ * Return: pointer to duplicated string
  */
 char *_strdup(char *str)
 {
 	char *dup;
-	int len, i = 0;
+	int i, len = 0;
 
 	if (!str)
 		return (NULL);
-	len = _strlen(str);
+	while (str[len])
+		len++;
 	dup = malloc(sizeof(char) * (len + 1));
 	if (!dup)
 		return (NULL);
-	while (i <= len)
-	{
+	for (i = 0; i < len; i++)
 		dup[i] = str[i];
-		i++;
-	}
+	dup[len] = '\0';
 	return (dup);
 }
 
@@ -89,9 +90,12 @@ char *_strdup(char *str)
  */
 int _strcmp(char *s1, char *s2)
 {
-	int i = 0;
-
-	while (s1[i] && s2[i] && s1[i] == s2[i])
-		i++;
-	return (s1[i] - s2[i]);
+	while (*s1 && *s2)
+	{
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
+	}
+	return (*s1 - *s2);
 }

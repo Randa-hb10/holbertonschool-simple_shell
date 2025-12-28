@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <errno.h>
+#include <signal.h>
 
 extern char **environ;
 
@@ -23,6 +24,7 @@ int _strcmp(char *s1, char *s2);
 void _puts_err(char *str);
 void print_number(int n);
 void print_error(char *name, int count, char *cmd);
+void free_args(char **args);
 
 /* parser.c */
 char **tokenize(char *line);

@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * tokenize - splits string into tokens
- * @line: string to split
+ * tokenize - splits line into tokens
+ * @line: input string
  * Return: array of tokens
  */
 char **tokenize(char *line)
@@ -12,20 +12,28 @@ char **tokenize(char *line)
 	char *token;
 
 	if (!tokens)
-		return (NULL);
-	token = strtok(line, " \t\n");
-	while (token)
 	{
-		tokens[i] = token;
+		perror("malloc");
+		exit(EXIT_FAILURE);
+	}
+
+	token = strtok(line, " \t\r\n\a");
+	while (token != NULL)
+	{
+		tokens[i] = _strdup(token);
 		i++;
+
 		if (i >= bufsize)
 		{
 			bufsize += 64;
 			tokens = realloc(tokens, bufsize * sizeof(char *));
 			if (!tokens)
-				return (NULL);
+			{
+				perror("realloc");
+				exit(EXIT_FAILURE);
+			}
 		}
-		token = strtok(NULL, " \t\n");
+		token = strtok(NULL, " \t\r\n\a");
 	}
 	tokens[i] = NULL;
 	return (tokens);

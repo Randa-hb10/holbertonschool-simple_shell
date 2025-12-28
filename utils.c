@@ -23,25 +23,28 @@ void _puts_err(char *str)
  */
 void print_number(int n)
 {
-	unsigned int m;
+	char buffer[12];
+	int i = 0;
 
-	if (n < 0)
+	if (n == 0)
 	{
-		m = -n;
-		write(STDERR_FILENO, "-", 1);
+		_puts_err("0");
+		return;
 	}
-	else
-		m = n;
-	if (m / 10)
-		print_number(m / 10);
-	write(STDERR_FILENO, &"0123456789"[m % 10], 1);
+	while (n > 0)
+	{
+		buffer[i++] = (n % 10) + '0';
+		n /= 10;
+	}
+	while (i > 0)
+		write(STDERR_FILENO, &buffer[--i], 1);
 }
 
 /**
  * print_error - prints error message
  * @name: program name
- * @count: line count
- * @cmd: command
+ * @count: loop count
+ * @cmd: command name
  */
 void print_error(char *name, int count, char *cmd)
 {
@@ -51,4 +54,22 @@ void print_error(char *name, int count, char *cmd)
 	_puts_err(": ");
 	_puts_err(cmd);
 	_puts_err(": not found\n");
+}
+
+/**
+ * free_args - frees array of strings
+ * @args: array
+ */
+void free_args(char **args)
+{
+	int i = 0;
+
+	if (!args)
+		return;
+	while (args[i])
+	{
+		free(args[i]);
+		i++;
+	}
+	free(args);
 }
