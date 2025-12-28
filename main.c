@@ -4,7 +4,7 @@
  * main - entry point
  * @argc: argument count
  * @argv: argument vector
- * Return: 0 on success
+ * Return: 0 on success, 127 on command not found
  */
 int main(int argc, char **argv)
 {
@@ -12,6 +12,7 @@ int main(int argc, char **argv)
 	size_t len = 0;
 	ssize_t nread;
 	int loop_count = 0, status, k;
+	int exit_status = 0;
 	pid_t pid;
 	(void)argc;
 
@@ -40,7 +41,7 @@ int main(int argc, char **argv)
 		{
 			free_args(args);
 			free(line);
-			exit(0);
+			exit(exit_status);
 		}
 		if (_strcmp(args[0], "env") == 0)
 		{
@@ -52,6 +53,7 @@ int main(int argc, char **argv)
 				k++;
 			}
 			free_args(args);
+			exit_status = 0;
 			continue;
 		}
 
@@ -63,20 +65,25 @@ int main(int argc, char **argv)
 			{
 				if (execve(cmd_path, args, environ) == -1)
 					perror(argv[0]);
-				exit(EXIT_FAILURE);
+				exit(2);
 			}
 			else if (pid < 0)
 				perror("fork");
-			else
+			else 
+			{
 				wait(&status);
+				if (WIFEXITED(status))
+					exit_status = WEXITSTATUS(status);
+			}
 			free(cmd_path);
 		}
 		else
 		{
 			print_error(argv[0], loop_count, args[0]);
+			exit_status = 127;
 		}
 		free_args(args);
 	}
 	free(line);
-	return (0);
+	return (exit_status);
 }
