@@ -2,7 +2,7 @@
 
 /**
  * main - Entry point for the simple shell
- * @argc: Argument count
+ * @argc: Argument count (unused)
  * @argv: Argument vector
  * Return: Exit status
  */
