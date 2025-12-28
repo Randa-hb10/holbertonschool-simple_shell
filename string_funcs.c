@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * _strlen - returns the length of a string
- * @s: string
- * Return: length
+ * _strlen - Returns length of string
+ * @s: String
+ * Return: Length
  */
 int _strlen(char *s)
 {
@@ -17,10 +17,10 @@ int _strlen(char *s)
 }
 
 /**
- * _strcpy - copies the string pointed to by src
- * @dest: destination
- * @src: source
- * Return: pointer to dest
+ * _strcpy - Copies string
+ * @dest: Destination
+ * @src: Source
+ * Return: Dest
  */
 char *_strcpy(char *dest, char *src)
 {
@@ -38,10 +38,10 @@ char *_strcpy(char *dest, char *src)
 }
 
 /**
- * _strcat - concatenates two strings
- * @dest: destination
- * @src: source
- * Return: pointer to dest
+ * _strcat - Concatenates strings
+ * @dest: Destination
+ * @src: Source
+ * Return: Dest
  */
 char *_strcat(char *dest, char *src)
 {
@@ -60,9 +60,9 @@ char *_strcat(char *dest, char *src)
 }
 
 /**
- * _strdup - duplicates a string
- * @str: string to duplicate
- * Return: pointer to duplicated string
+ * _strdup - Duplicates string
+ * @str: String
+ * Return: New string
  */
 char *_strdup(char *str)
 {
@@ -83,10 +83,10 @@ char *_strdup(char *str)
 }
 
 /**
- * _strcmp - compares two strings
- * @s1: first string
- * @s2: second string
- * Return: difference
+ * _strcmp - Compares strings
+ * @s1: First string
+ * @s2: Second string
+ * Return: Difference
  */
 int _strcmp(char *s1, char *s2)
 {

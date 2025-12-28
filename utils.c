@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * _puts_err - prints string to stderr
- * @str: string
+ * _puts_err - Prints to stderr
+ * @str: String
  */
 void _puts_err(char *str)
 {
@@ -18,8 +18,8 @@ void _puts_err(char *str)
 }
 
 /**
- * print_number - prints integer to stderr
- * @n: integer
+ * print_number - Prints integer to stderr
+ * @n: Number
  */
 void print_number(int n)
 {
@@ -41,10 +41,10 @@ void print_number(int n)
 }
 
 /**
- * print_error - prints error message
- * @name: program name
- * @count: loop count
- * @cmd: command name
+ * print_error - Prints error message
+ * @name: Program name
+ * @count: Loop count
+ * @cmd: Command
  */
 void print_error(char *name, int count, char *cmd)
 {
@@ -57,8 +57,8 @@ void print_error(char *name, int count, char *cmd)
 }
 
 /**
- * free_args - frees array of strings
- * @args: array
+ * free_args - Frees string array
+ * @args: Array
  */
 void free_args(char **args)
 {

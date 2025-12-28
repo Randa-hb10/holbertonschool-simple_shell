@@ -1,14 +1,13 @@
 #include "shell.h"
 
 /**
- * _getenv - gets env variable
- * @name: variable name
- * Return: value or NULL
+ * _getenv - Gets env variable
+ * @name: Name
+ * Return: Value
  */
 char *_getenv(const char *name)
 {
-	int i = 0, j;
-	int status;
+	int i = 0, j, status;
 
 	while (environ[i])
 	{
@@ -29,9 +28,9 @@ char *_getenv(const char *name)
 }
 
 /**
- * get_path - resolves command path
- * @cmd: command
- * Return: full path or NULL
+ * get_path - Finds command path
+ * @cmd: Command
+ * Return: Full path or NULL
  */
 char *get_path(char *cmd)
 {
@@ -45,11 +44,9 @@ char *get_path(char *cmd)
 			return (_strdup(cmd));
 		return (NULL);
 	}
-
 	path_env = _getenv("PATH");
 	if (!path_env)
 		return (NULL);
-
 	path_copy = _strdup(path_env);
 	dir = strtok(path_copy, ":");
 	while (dir)

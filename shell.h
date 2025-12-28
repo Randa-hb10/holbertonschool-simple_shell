@@ -33,4 +33,10 @@ char **tokenize(char *line);
 char *_getenv(const char *name);
 char *get_path(char *cmd);
 
+/* builtins.c */
+int check_builtins(char **args, char *line, int *status);
+
+/* execute.c */
+void execute_process(char *prog_name, char *cmd_path, char **args, int *status);
+
 #endif
