@@ -13,4 +13,3 @@ void print_prompt(void);
 void execute_cmd(char *cmd);
 
 #endif /* SHELL_H */
-
