@@ -1,41 +1,34 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-/* ============ REQUIRED HEADERS ============ */
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
-#include <sys/wait.h>
+#include <string.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 #include <sys/stat.h>
-#include <fcntl.h>
+#include <errno.h>
 
-/* ============ CONSTANTS ============ */
-#define MAX_ARGS 64
-#define BUFFER_SIZE 1024
-
-/* ============ EXTERNAL VARIABLES ============ */
 extern char **environ;
 
-/* ============ FUNCTION PROTOTYPES ============ */
+/* string_funcs.c */
+int _strlen(char *s);
+char *_strcpy(char *dest, char *src);
+char *_strcat(char *dest, char *src);
+char *_strdup(char *str);
+int _strcmp(char *s1, char *s2);
 
-/* Main functions */
-void shell_loop(void);
-char *read_line(void);
-char **parse_line(char *line);
-int execute_command(char **args);
+/* utils.c */
+void _puts_err(char *str);
+void print_number(int n);
+void print_error(char *name, int count, char *cmd);
 
-/* Execution functions */
-int launch_process(char **args);
+/* parser.c */
+char **tokenize(char *line);
 
-/* Helper functions */
-void display_prompt(void);
-void handle_eof(void);
-int is_empty_line(char *line);
-void free_args(char **args);
+/* path.c */
+char *_getenv(const char *name);
+char *get_path(char *cmd);
 
-/* Error handling */
-void print_error(char *command);
-
-#endif /* SHELL_H */
+#endif

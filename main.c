@@ -1,54 +1,56 @@
 #include "shell.h"
 
 /**
- * main - Entry point
- * Return: Always 0
+ * main - simple shell entry point
+ * @ac: argument count
+ * @av: argument vector
+ * Return: 0 on success
  */
-int main(void)
+int main(int ac, char **av)
 {
-    char *line = NULL;
-    size_t len = 0;
-    ssize_t nread;
-    char **args;
-    
-    while (1)
-    {
-        /* Display prompt only in interactive mode */
-        if (isatty(STDIN_FILENO))
-            write(STDOUT_FILENO, "($) ", 4);
-        
-        /* Read line */
-        nread = getline(&line, &len, stdin);
-        
-        /* Handle EOF (Ctrl+D) */
-        if (nread == -1)
-        {
-            if (isatty(STDIN_FILENO))
-                write(STDOUT_FILENO, "\n", 1);
-            free(line);
-            exit(EXIT_SUCCESS);
-        }
-        
-        /* Remove newline */
-        if (line[nread - 1] == '\n')
-            line[nread - 1] = '\0';
-        
-        /* Skip empty lines */
-        if (strlen(line) == 0)
-            continue;
-        
-        /* Parse line into arguments */
-        args = parse_line(line);
-        if (!args)
-            continue;
-        
-        /* Execute command */
-        execute_command(args);
-        
-        /* Clean up */
-        free_args(args);
-    }
-    
-    /* This won't be reached due to infinite loop */
-    return (0);
+	char *line = NULL, **argv = NULL, *cmd_path = NULL;
+	size_t len = 0;
+	ssize_t read;
+	int status, count = 0;
+	pid_t pid;
+	(void)ac;
+
+	while (1)
+	{
+		count++;
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, "#cisfun$ ", 9);
+		read = getline(&line, &len, stdin);
+		if (read == -1)
+		{
+			free(line);
+			if (isatty(STDIN_FILENO))
+				write(STDOUT_FILENO, "\n", 1);
+			exit(0);
+		}
+		argv = tokenize(line);
+		if (!argv || !argv[0])
+		{
+			free(argv);
+			continue;
+		}
+		cmd_path = get_path(argv[0]);
+		if (cmd_path)
+		{
+			pid = fork();
+			if (pid == 0)
+			{
+				if (execve(cmd_path, argv, environ) == -1)
+					exit(127);
+			}
+			else
+				wait(&status);
+			free(cmd_path);
+		}
+		else
+			print_error(av[0], count, argv[0]);
+		free(argv);
+	}
+	free(line);
+	return (0);
 }
