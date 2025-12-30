@@ -14,6 +14,7 @@ int check_builtins(char **args, char *line, int *status, char *name, int count)
 			{
 				*status = 2;
 				print_exit_error(name, count, args[1]);
+				free_args(args); /* FIX: Free args before returning */
 				return (1);
 			}
 			*status = exit_val;
