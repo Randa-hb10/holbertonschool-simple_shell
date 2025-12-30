@@ -13,7 +13,7 @@ int main(int ac, char **av)
 	ssize_t n;
 	int count = 0, status = 0, fd = STDIN_FILENO;
 
-	/* Check if file argument is provided (Task 22) */
+	/* Check for file argument (Task 22) */
 	if (ac == 2)
 	{
 		fd = open(av[1], O_RDONLY);
@@ -30,13 +30,13 @@ int main(int ac, char **av)
 	while (1)
 	{
 		count++;
-		/* Only print prompt if interactive AND reading from stdin */
+		/* Print prompt only if interactive */
 		if (isatty(STDIN_FILENO) && fd == STDIN_FILENO)
 			write(STDOUT_FILENO, "($) ", 4);
 
 		n = _getline(&line, &len, fd);
 		
-		if (n == -1) /* End of file or Error */
+		if (n == -1) /* EOF or Error */
 		{
 			free(line);
 			if (fd != STDIN_FILENO) close(fd);
