@@ -110,7 +110,7 @@ LIMITATIONS
 
 AUTHOR
        Mohammed Aloufi
-       Baeshen Hussain Randa
+       Randa Baeshen
 
 SEE ALSO
        sh(1), bash(1), execve(2), fork(2), wait(2)
