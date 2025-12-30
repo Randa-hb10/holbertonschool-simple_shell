@@ -7,8 +7,13 @@ char *_getenv(const char *name)
 	{
 		s = 1;
 		for (j = 0; environ[i][j] != '='; j++)
-			if (environ[i][j] != name[j]) { s = 0; break; }
-		if (s) return (&environ[i][j + 1]);
+			if (environ[i][j] != name[j])
+			{
+				s = 0;
+				break;
+			}
+		if (s)
+			return (&environ[i][j + 1]);
 		i++;
 	}
 	return (NULL);
@@ -22,11 +27,13 @@ char *get_path(char *cmd)
 
 	if (_strchr(cmd, '/'))
 	{
-		if (stat(cmd, &s) == 0) return (_strdup(cmd));
+		if (stat(cmd, &s) == 0)
+			return (_strdup(cmd));
 		return (NULL);
 	}
 	pe = _getenv("PATH");
-	if (!pe) return (NULL);
+	if (!pe)
+		return (NULL);
 
 	while (pe[i])
 	{
@@ -39,12 +46,16 @@ char *get_path(char *cmd)
 				_strcpy(fp, pe + j);
 				fp[len] = '\0';
 				_strcat(fp, "/");
-			} else _strcpy(fp, "./");
+			}
+			else
+				_strcpy(fp, "./");
 			
 			_strcat(fp, cmd);
-			if (stat(fp, &s) == 0) return (fp);
+			if (stat(fp, &s) == 0)
+				return (fp);
 			free(fp);
-			if (pe[i] == '\0') break;
+			if (pe[i] == '\0')
+				break;
 			j = i + 1;
 		}
 		i++;

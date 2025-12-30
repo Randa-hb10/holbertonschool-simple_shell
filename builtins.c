@@ -31,15 +31,19 @@ int check_builtins(char **args, char *line, int *status, char *name, int count)
 	}
 	if (_strcmp(args[0], "setenv") == 0)
 	{
-		if (_mysetenv(args) != 0) *status = 1;
-		else *status = 0;
+		if (_mysetenv(args) != 0)
+			*status = 1;
+		else
+			*status = 0;
 		free_args(args);
 		return (1);
 	}
 	if (_strcmp(args[0], "unsetenv") == 0)
 	{
-		if (_myunsetenv(args) != 0) *status = 1;
-		else *status = 0;
+		if (_myunsetenv(args) != 0)
+			*status = 1;
+		else
+			*status = 0;
 		free_args(args);
 		return (1);
 	}

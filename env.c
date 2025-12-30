@@ -18,7 +18,8 @@ char *create_new_entry(char *name, char *value)
 	int len2 = _strlen(value);
 
 	new_entry = malloc(len1 + len2 + 2);
-	if (!new_entry) return (NULL);
+	if (!new_entry)
+		return (NULL);
 
 	_strcpy(new_entry, name);
 	_strcat(new_entry, "=");
@@ -32,15 +33,25 @@ int _mysetenv(char **args)
 	char *new_entry;
 	char **new_environ;
 
-	if (!args[1]) { print_env(); return (0); }
-	if (!args[2]) { _puts_err("Usage: setenv VARIABLE VALUE\n"); return (1); }
+	if (!args[1])
+	{
+		print_env();
+		return (0);
+	}
+	if (!args[2])
+	{
+		_puts_err("Usage: setenv VARIABLE VALUE\n");
+		return (1);
+	}
 
 	new_entry = create_new_entry(args[1], args[2]);
-	if (!new_entry) return (1);
+	if (!new_entry)
+		return (1);
 
 	for (i = 0; environ[i]; i++)
 	{
-		for (k = 0; args[1][k] && environ[i][k] == args[1][k]; k++) ;
+		for (k = 0; args[1][k] && environ[i][k] == args[1][k]; k++)
+			;
 		if (args[1][k] == '\0' && environ[i][k] == '=')
 		{
 			environ[i] = new_entry;
@@ -49,9 +60,14 @@ int _mysetenv(char **args)
 	}
 
 	new_environ = malloc(sizeof(char *) * (i + 2));
-	if (!new_environ) { free(new_entry); return (1); }
+	if (!new_environ)
+	{
+		free(new_entry);
+		return (1);
+	}
 
-	for (j = 0; j < i; j++) new_environ[j] = environ[j];
+	for (j = 0; j < i; j++)
+		new_environ[j] = environ[j];
 	new_environ[j] = new_entry;
 	new_environ[j + 1] = NULL;
 	environ = new_environ;
@@ -61,14 +77,21 @@ int _mysetenv(char **args)
 int _myunsetenv(char **args)
 {
 	int i, j, k;
-	if (!args[1]) { _puts_err("Usage: unsetenv VARIABLE\n"); return (1); }
+
+	if (!args[1])
+	{
+		_puts_err("Usage: unsetenv VARIABLE\n");
+		return (1);
+	}
 
 	for (i = 0; environ[i]; i++)
 	{
-		for (k = 0; args[1][k] && environ[i][k] == args[1][k]; k++) ;
+		for (k = 0; args[1][k] && environ[i][k] == args[1][k]; k++)
+			;
 		if (args[1][k] == '\0' && environ[i][k] == '=')
 		{
-			for (j = i; environ[j]; j++) environ[j] = environ[j + 1];
+			for (j = i; environ[j]; j++)
+				environ[j] = environ[j + 1];
 			return (0);
 		}
 	}

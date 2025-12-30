@@ -25,6 +25,7 @@ void execute_process(char *name, char *path, char **args, int *stat)
 void handle_execution(char *name, char **args, int count, int *stat)
 {
 	char *path = get_path(args[0]);
+
 	if (path)
 	{
 		execute_process(name, path, args, stat);

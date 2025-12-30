@@ -36,7 +36,8 @@ int main(int ac, char **av)
 		if (n == -1)
 		{
 			free(line);
-			if (fd != STDIN_FILENO) close(fd);
+			if (fd != STDIN_FILENO)
+				close(fd);
 			exit(status);
 		}
 
@@ -54,6 +55,7 @@ int main(int ac, char **av)
 		free_args(args);
 	}
 	free(line);
-	if (fd != STDIN_FILENO) close(fd);
+	if (fd != STDIN_FILENO)
+		close(fd);
 	return (status);
 }
