@@ -16,9 +16,9 @@ char *_getenv(const char *name)
 
 char *get_path(char *cmd)
 {
-	char *pe, *pc, *d, *fp;
+	char *pe, *fp;
 	struct stat s;
-	int l;
+	int i = 0, j = 0, len;
 
 	if (_strchr(cmd, '/'))
 	{
@@ -27,17 +27,38 @@ char *get_path(char *cmd)
 	}
 	pe = _getenv("PATH");
 	if (!pe) return (NULL);
-	pc = _strdup(pe);
-	d = strtok(pc, ":");
-	while (d)
+
+	while (pe[i])
 	{
-		l = _strlen(d) + _strlen(cmd) + 2;
-		fp = malloc(l);
-		_strcpy(fp, d); _strcat(fp, "/"); _strcat(fp, cmd);
-		if (stat(fp, &s) == 0) { free(pc); return (fp); }
-		free(fp);
-		d = strtok(NULL, ":");
+		if (pe[i] == ':')
+		{
+			len = i - j;
+			fp = malloc(len + _strlen(cmd) + 2);
+			if (len > 0)
+			{
+				_strcpy(fp, pe + j);
+				fp[len] = '\0'; /* Null terminate dir */
+				_strcat(fp, "/");
+			} else _strcpy(fp, "./"); /* Empty path means current dir */
+			
+			_strcat(fp, cmd);
+			if (stat(fp, &s) == 0) return (fp);
+			free(fp);
+			j = i + 1;
+		}
+		i++;
 	}
-	free(pc);
+	/* Check last path segment */
+	len = i - j;
+	if (len > 0)
+	{
+		fp = malloc(len + _strlen(cmd) + 2);
+		_strcpy(fp, pe + j);
+		fp[len] = '\0'; // Temporarily null terminate
+		_strcat(fp, "/");
+		_strcat(fp, cmd);
+		if (stat(fp, &s) == 0) return (fp);
+		free(fp);
+	}
 	return (NULL);
 }
