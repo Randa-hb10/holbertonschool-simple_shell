@@ -22,6 +22,7 @@ char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
+char *_strchr(char *s, char c);
 
 /* utils.c */
 void _puts_err(char *str);

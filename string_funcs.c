@@ -71,3 +71,16 @@ int _strcmp(char *s1, char *s2)
 	}
 	return (*s1 - *s2);
 }
+
+char *_strchr(char *s, char c)
+{
+	while (*s)
+	{
+		if (*s == c)
+			return (s);
+		s++;
+	}
+	if (!c)
+		return (s);
+	return (NULL);
+}

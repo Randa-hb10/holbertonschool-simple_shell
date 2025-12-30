@@ -28,7 +28,7 @@ char *get_path(char *cmd)
 	struct stat s;
 	int l;
 
-	if (strchr(cmd, '/'))
+	if (_strchr(cmd, '/'))
 	{
 		if (stat(cmd, &s) == 0)
 			return (_strdup(cmd));
