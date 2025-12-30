@@ -14,7 +14,7 @@ int check_builtins(char **args, char *line, int *status, char *name, int count)
 			{
 				*status = 2;
 				print_exit_error(name, count, args[1]);
-				free_args(args); /* FIX: Free args before returning */
+				free_args(args);
 				return (1);
 			}
 			*status = exit_val;
@@ -31,6 +31,20 @@ int check_builtins(char **args, char *line, int *status, char *name, int count)
 			write(STDOUT_FILENO, "\n", 1);
 			k++;
 		}
+		free_args(args);
+		*status = 0;
+		return (1);
+	}
+	if (_strcmp(args[0], "setenv") == 0)
+	{
+		if (_mysetenv(args) != 0) _puts_err("Failed to setenv\n");
+		free_args(args);
+		*status = 0;
+		return (1);
+	}
+	if (_strcmp(args[0], "unsetenv") == 0)
+	{
+		_myunsetenv(args);
 		free_args(args);
 		*status = 0;
 		return (1);

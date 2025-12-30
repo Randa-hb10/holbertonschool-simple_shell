@@ -45,6 +45,10 @@ char *get_path(char *cmd);
 /* builtins.c */
 int check_builtins(char **args, char *line, int *status, char *name, int count);
 
+/* env.c */
+int _mysetenv(char **args);
+int _myunsetenv(char **args);
+
 /* execute.c */
 void execute_process(char *name, char *path, char **args, int *stat);
 void handle_execution(char *name, char **args, int count, int *stat);
