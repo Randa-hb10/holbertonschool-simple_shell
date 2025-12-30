@@ -11,6 +11,7 @@
 #include <errno.h>
 #include <signal.h>
 #include <limits.h>
+#include <fcntl.h>
 
 #define READ_BUF_SIZE 1024
 
@@ -27,6 +28,7 @@ int _strcmp(char *s1, char *s2);
 char *_strchr(char *s, char c);
 int _atoi(char *s);
 void print_exit_error(char *name, int count, char *arg);
+int _strncmp(char *s1, char *s2, int n);
 
 /* utils.c */
 void _puts_err(char *str);
@@ -48,6 +50,7 @@ int check_builtins(char **args, char *line, int *status, char *name, int count);
 /* env.c */
 int _mysetenv(char **args);
 int _myunsetenv(char **args);
+void print_env(void);
 
 /* execute.c */
 void execute_process(char *name, char *path, char **args, int *stat);

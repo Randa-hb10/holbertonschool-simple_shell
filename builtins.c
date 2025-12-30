@@ -3,7 +3,6 @@
 int check_builtins(char **args, char *line, int *status, char *name, int count)
 {
 	int exit_val;
-	int k = 0;
 
 	if (_strcmp(args[0], "exit") == 0)
 	{
@@ -25,28 +24,23 @@ int check_builtins(char **args, char *line, int *status, char *name, int count)
 	}
 	if (_strcmp(args[0], "env") == 0)
 	{
-		while (environ[k])
-		{
-			write(STDOUT_FILENO, environ[k], _strlen(environ[k]));
-			write(STDOUT_FILENO, "\n", 1);
-			k++;
-		}
+		print_env();
 		free_args(args);
 		*status = 0;
 		return (1);
 	}
 	if (_strcmp(args[0], "setenv") == 0)
 	{
-		if (_mysetenv(args) != 0) _puts_err("Failed to setenv\n");
+		if (_mysetenv(args) != 0) *status = 1;
+		else *status = 0;
 		free_args(args);
-		*status = 0;
 		return (1);
 	}
 	if (_strcmp(args[0], "unsetenv") == 0)
 	{
-		_myunsetenv(args);
+		if (_myunsetenv(args) != 0) *status = 1;
+		else *status = 0;
 		free_args(args);
-		*status = 0;
 		return (1);
 	}
 	return (0);
