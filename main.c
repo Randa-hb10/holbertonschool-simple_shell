@@ -20,7 +20,7 @@ int main(int ac, char **av)
 		}
 		args = tokenize(line);
 		if (!args[0]) { free_args(args); continue; }
-		if (check_builtins(args, line, &status)) continue;
+		if (check_builtins(args, line, &status, av[0], count)) continue;
 		handle_execution(av[0], args, count, &status);
 		free_args(args);
 	}

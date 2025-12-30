@@ -22,7 +22,11 @@ char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
+
+/* tools.c */
 char *_strchr(char *s, char c);
+int _atoi(char *s);
+void print_exit_error(char *name, int count, char *arg);
 
 /* utils.c */
 void _puts_err(char *str);
@@ -39,7 +43,7 @@ char *_getenv(const char *name);
 char *get_path(char *cmd);
 
 /* builtins.c */
-int check_builtins(char **args, char *line, int *status);
+int check_builtins(char **args, char *line, int *status, char *name, int count);
 
 /* execute.c */
 void execute_process(char *name, char *path, char **args, int *stat);
