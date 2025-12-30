@@ -1,0 +1,117 @@
+HSH(1)                     Simple Shell Manual                     HSH(1)
+
+NAME
+       hsh - a simple UNIX command line interpreter
+
+SYNOPSIS
+       ./hsh
+
+DESCRIPTION
+       hsh is a simple UNIX command line interpreter written in C.
+       It executes commands read from standard input using system calls.
+
+       The shell supports both interactive and non-interactive modes and
+       mimics the basic behavior of /bin/sh.
+
+       This project was developed as part of the Holberton School
+       curriculum.
+
+MODES
+       Interactive Mode
+              When standard input is connected to a terminal, hsh
+              displays a prompt and waits for user input.
+
+              Example:
+                     $ ./hsh
+                     ($) ls
+                     ($) exit
+
+       Non-Interactive Mode
+              When standard input is not connected to a terminal, hsh
+              reads commands from standard input without displaying
+              a prompt.
+
+              Example:
+                     $ echo "ls" | ./hsh
+
+BUILT-IN COMMANDS
+       exit
+              Exit the shell.
+
+              Usage:
+                     exit
+
+COMMAND EXECUTION
+       The shell executes commands using the following steps:
+
+       - Read input using getline()
+       - Parse input into tokens using strtok()
+       - Resolve the command path using the PATH environment variable
+       - Create a child process using fork()
+       - Execute the command using execve()
+       - Wait for the child process using wait()
+
+       If the command contains a '/', it is executed directly.
+       Otherwise, the shell searches for the command in the PATH
+       environment variable.
+
+ERROR HANDLING
+       If a command cannot be found, hsh prints an error message
+       identical to /bin/sh, except that the program name matches argv[0].
+
+       Example:
+              ./hsh: 1: command: not found
+
+EOF HANDLING
+       hsh properly handles End Of File (EOF).
+
+       Pressing Ctrl+D causes the shell to exit gracefully.
+
+ENVIRONMENT
+       hsh inherits the environment from the parent process.
+       The PATH environment variable is used to locate executable files.
+
+FILES
+       main.c
+              Program entry point.
+
+       shell.c
+              Contains the main shell loop and prompt handling.
+
+       parser.c
+              Handles input parsing and tokenization.
+
+       executor.c
+              Responsible for process creation and command execution.
+
+       path.c
+              Handles PATH resolution and command lookup.
+
+       string_function.c
+              Contains custom string helper functions.
+
+       utils.c
+              General utility helper functions.
+
+       shell.h
+              Header file containing function prototypes and macros.
+
+EXIT STATUS
+       0      Successful execution.
+       >0     An error occurred.
+
+LIMITATIONS
+       This version of the shell does not support:
+              - Pipes (|)
+              - Input/output redirection (<, >, >>)
+              - Logical operators (&&, ||)
+              - Aliases
+              - Environment built-in commands
+
+AUTHOR
+       Mohammed Aloufi
+       Baeshen Hussain Randa
+
+SEE ALSO
+       sh(1), bash(1), execve(2), fork(2), wait(2)
+
