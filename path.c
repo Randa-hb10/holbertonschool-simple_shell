@@ -1,69 +1,8 @@
 #include "shell.h"
-
-/**
- * _getenv - Gets env variable
- * @name: Name
- * Return: Value
- */
-char *_getenv(const char *name)
-{
-	int i = 0, j, status;
-
-	while (environ[i])
-	{
-		status = 1;
-		for (j = 0; environ[i][j] != '='; j++)
-		{
-			if (environ[i][j] != name[j])
-			{
-				status = 0;
-				break;
-			}
-		}
-		if (status)
-			return (&environ[i][j + 1]);
-		i++;
-	}
-	return (NULL);
-}
-
-/**
- * get_path - Finds command path
- * @cmd: Command
- * Return: Full path or NULL
- */
-char *get_path(char *cmd)
-{
-	char *path_env, *path_copy, *dir, *full_path;
-	struct stat st;
-	int len;
-
-	if (strchr(cmd, '/'))
-	{
-		if (stat(cmd, &st) == 0)
-			return (_strdup(cmd));
-		return (NULL);
-	}
-	path_env = _getenv("PATH");
-	if (!path_env)
-		return (NULL);
-	path_copy = _strdup(path_env);
-	dir = strtok(path_copy, ":");
-	while (dir)
-	{
-		len = _strlen(dir) + _strlen(cmd) + 2;
-		full_path = malloc(len);
-		_strcpy(full_path, dir);
-		_strcat(full_path, "/");
-		_strcat(full_path, cmd);
-		if (stat(full_path, &st) == 0)
-		{
-			free(path_copy);
-			return (full_path);
-		}
-		free(full_path);
-		dir = strtok(NULL, ":");
-	}
-	free(path_copy);
-	return (NULL);
+char *_getenv(const char *name) { int i=0,j,s; while(environ[i]){ s=1; for(j=0;environ[i][j]!='=';j++) if(environ[i][j]!=name[j]){s=0;break;} if(s)return(&environ[i][j+1]); i++; } return NULL; }
+char *get_path(char *cmd) { char *pe,*pc,*d,*fp; struct stat s; int l;
+	if(strchr(cmd,'/')){ if(stat(cmd,&s)==0)return _strdup(cmd); return NULL; }
+	pe=_getenv("PATH"); if(!pe)return NULL; pc=_strdup(pe); d=strtok(pc,":");
+	while(d){ l=_strlen(d)+_strlen(cmd)+2; fp=malloc(l); _strcpy(fp,d); _strcat(fp,"/"); _strcat(fp,cmd); if(stat(fp,&s)==0){free(pc);return fp;} free(fp); d=strtok(NULL,":"); }
+	free(pc); return NULL;
 }
