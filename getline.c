@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+ * _getline - reads a line from fd
+ * @lineptr: buffer pointer
+ * @n: buffer size
+ * @fd: file descriptor
+ * Return: bytes read
+ */
 ssize_t _getline(char **lineptr, size_t *n, int fd)
 {
 	static char buf[READ_BUF_SIZE];
