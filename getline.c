@@ -1,12 +1,5 @@
 #include "shell.h"
 
-/**
- * _getline - custom getline reading from fd
- * @lineptr: buffer
- * @n: buffer size
- * @fd: file descriptor
- * Return: bytes read
- */
 ssize_t _getline(char **lineptr, size_t *n, int fd)
 {
 	static char buf[READ_BUF_SIZE];
@@ -16,7 +9,12 @@ ssize_t _getline(char **lineptr, size_t *n, int fd)
 	char *new_p, c;
 
 	if (!lineptr || !n) return (-1);
-	if (!*lineptr) { *n = 128; *lineptr = malloc(*n); if (!*lineptr) return (-1); }
+	if (!*lineptr)
+	{
+		*n = 128;
+		*lineptr = malloc(*n);
+		if (!*lineptr) return (-1);
+	}
 
 	while (1)
 	{
@@ -36,6 +34,10 @@ ssize_t _getline(char **lineptr, size_t *n, int fd)
 			*lineptr = new_p;
 		}
 		(*lineptr)[len++] = c;
-		if (c == '\n') { (*lineptr)[len] = '\0'; return (len); }
+		if (c == '\n')
+		{
+			(*lineptr)[len] = '\0';
+			return (len);
+		}
 	}
 }

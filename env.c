@@ -61,7 +61,6 @@ int _mysetenv(char **args)
 int _myunsetenv(char **args)
 {
 	int i, j, k;
-
 	if (!args[1]) { _puts_err("Usage: unsetenv VARIABLE\n"); return (1); }
 
 	for (i = 0; environ[i]; i++)
