@@ -26,20 +26,19 @@ $ ./hsh
 ($) ls
 ($) exit
 
-       Non-Interactive Mode
-              When standard input is not connected to a terminal, hsh
-              reads commands from standard input without displaying
-              a prompt.
+Non-Interactive Mode
+When standard input is not connected to a terminal, hsh
+reads commands from standard input without displaying a prompt.
 
-              Example:
-                     $ echo "ls" | ./hsh
+Example:
+$ echo "ls" | ./hsh
 
 BUILT-IN COMMANDS
-       exit
-              Exit the shell.
+exit
+Exit the shell.
 
-              Usage:
-                     exit
+Usage:
+exit
 
 COMMAND EXECUTION
        The shell executes commands using the following steps:
