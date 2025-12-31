@@ -11,7 +11,6 @@ The shell mimics the behavior of `/bin/sh` by:
 - Parsing commands
 - Executing programs using system calls
 - Handling interactive and non-interactive modes
-
 ---
 
 ## 🎯 Learning Objectives
@@ -27,7 +26,6 @@ At the end of this project, we are able to explain:
 - How EOF (End Of File) is handled
 - Memory management in C (avoiding memory leaks)
 
----
 
 ## 🛠 Requirements
 - OS: Ubuntu 20.04 LTS
@@ -45,18 +43,16 @@ At the end of this project, we are able to explain:
 
 * Header files must be include guarded
 
----
 
-
-⚙️ Compilation
+## ⚙️ Compilation
 
 To compile the shell, run:
 
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
----
 
-🚀 Usage
+
+## 🚀 Usage
 
 📄 Interactive Mode
 $ ./hsh
@@ -64,12 +60,11 @@ $ ./hsh
 ($) pwd
 ($) exit
 
-📄 Non-Interactive Mode
+## 📄 Non-Interactive Mode
 $ echo "ls" | ./hsh
 
 $ cat file.txt | ./hsh
 
----
 
 ## ✨ Features
 
@@ -140,7 +135,7 @@ holbertonschool-simple_shell/
 
 
 
-📌 Project Tasks (Development Stages)
+## 📌 Project Tasks (Development Stages)
 0. Betty would be proud
 
 Write clean, readable, and well-structured code that passes all Betty coding style checks.
@@ -222,7 +217,7 @@ valgrind ./hsh
 
 ---
 
-🏁 Conclusion
+## 🏁 Conclusion
 
 This project provides a deep understanding of how UNIX shells work and strengthens low-level programming skills in C, especially process management and system calls.
 
