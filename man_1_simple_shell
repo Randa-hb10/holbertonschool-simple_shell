@@ -65,21 +65,21 @@ hsh properly handles End Of File (EOF).
 Pressing Ctrl+D causes the shell to exit gracefully.
 
 ENVIRONMENT
-       hsh inherits the environment from the parent process.
-       The PATH environment variable is used to locate executable files.
+hsh inherits the environment from the parent process.
+The PATH environment variable is used to locate executable files.
 
 FILES
-       main.c
-              Program entry point.
+main.c
+Program entry point.
 
-       shell.c
-              Contains the main shell loop and prompt handling.
+shell.c
+Contains the main shell loop and prompt handling.
 
-       parser.c
-              Handles input parsing and tokenization.
+parser.c
+Handles input parsing and tokenization.
 
-       executor.c
-              Responsible for process creation and command execution.
+executor.c
+esponsible for process creation and command execution.
 
        path.c
               Handles PATH resolution and command lookup.
