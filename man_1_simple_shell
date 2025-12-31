@@ -13,8 +13,7 @@ hsh is a simple UNIX command line interpreter written in C.
 The shell supports both interactive and non-interactive modes and
  mimics the basic behavior of /bin/sh.
 
- This project was developed as part of the Holberton School
-curriculum.
+ This project was developed as part of the Holberton School curriculum.
 
 MODES
 Interactive Mode
@@ -41,14 +40,14 @@ Usage:
 exit
 
 COMMAND EXECUTION
-       The shell executes commands using the following steps:
+The shell executes commands using the following steps:
 
-       - Read input using getline()
-       - Parse input into tokens using strtok()
-       - Resolve the command path using the PATH environment variable
-       - Create a child process using fork()
-       - Execute the command using execve()
-       - Wait for the child process using wait()
+- Read input using getline()
+- Parse input into tokens using strtok()
+- Resolve the command path using the PATH environment variable
+- Create a child process using fork()
+- Execute the command using execve()
+- Wait for the child process using wait()
 
        If the command contains a '/', it is executed directly.
        Otherwise, the shell searches for the command in the PATH
