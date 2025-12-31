@@ -49,21 +49,20 @@ The shell executes commands using the following steps:
 - Execute the command using execve()
 - Wait for the child process using wait()
 
-       If the command contains a '/', it is executed directly.
-       Otherwise, the shell searches for the command in the PATH
-       environment variable.
+If the command contains a '/', it is executed directly.
+Otherwise, the shell searches for the command in the PATH environment variable.
 
 ERROR HANDLING
-       If a command cannot be found, hsh prints an error message
-       identical to /bin/sh, except that the program name matches argv[0].
+If a command cannot be found, hsh prints an error message
+identical to /bin/sh, except that the program name matches argv[0].
 
-       Example:
-              ./hsh: 1: command: not found
+Example:
+./hsh: 1: command: not found
 
 EOF HANDLING
-       hsh properly handles End Of File (EOF).
+hsh properly handles End Of File (EOF).
 
-       Pressing Ctrl+D causes the shell to exit gracefully.
+Pressing Ctrl+D causes the shell to exit gracefully.
 
 ENVIRONMENT
        hsh inherits the environment from the parent process.
