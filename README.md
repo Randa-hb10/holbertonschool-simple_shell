@@ -45,11 +45,16 @@ At the end of this project, we are able to explain:
 
 * Header files must be include guarded
 
+---
+
+
 ⚙️ Compilation
 
 To compile the shell, run:
 
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+
+---
 
 🚀 Usage
 
@@ -64,6 +69,7 @@ $ echo "ls" | ./hsh
 
 $ cat file.txt | ./hsh
 
+---
 
 ## ✨ Features
 
@@ -83,6 +89,7 @@ $ cat file.txt | ./hsh
 
 ✔ No memory leaks
 
+
 ❌ Not Supported
 
 * Pipes (|)
@@ -94,6 +101,8 @@ $ cat file.txt | ./hsh
 * Aliases
 
 * Command chaining (&&, ||)
+
+---
 
 ## ⚙️ How It Works
 
