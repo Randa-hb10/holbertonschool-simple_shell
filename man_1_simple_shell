@@ -101,16 +101,12 @@ EXIT STATUS
        >0     An error occurred.
 
 LIMITATIONS
-       This version of the shell does not support:
-              - Pipes (|)
-              - Input/output redirection (<, >, >>)
-              - Logical operators (&&, ||)
-              - Aliases
-              - Environment built-in commands
-
-AUTHOR
-       Mohammed Aloufi
-       Randa Baeshen
+This version of the shell does not support:
+- Pipes (|)
+- Input/output redirection (<, >, >>)
+- Logical operators (&&, ||)
+- Aliases
+- Environment built-in commands
 
 SEE ALSO
        sh(1), bash(1), execve(2), fork(2), wait(2)
