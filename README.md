@@ -14,12 +14,6 @@ The shell mimics the behavior of `/bin/sh` by:
 
 ---
 
-## 👥 Authors
-- **Mohammed Aloufi**
-- **Randa Baeshen**
-
----
-
 ## 🎯 Learning Objectives
 At the end of this project, we are able to explain:
 
