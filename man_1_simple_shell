@@ -1,4 +1,4 @@
-Simple Shell Manual  
+Simple Shell Manual HSH(1)
 
 NAME
 hsh - a simple UNIX command line interpreter
@@ -17,14 +17,14 @@ The shell supports both interactive and non-interactive modes and
 curriculum.
 
 MODES
-       Interactive Mode
-              When standard input is connected to a terminal, hsh
-              displays a prompt and waits for user input.
+Interactive Mode
+When standard input is connected to a terminal, hsh
+displays a prompt and waits for user input.
 
-              Example:
-                     $ ./hsh
-                     ($) ls
-                     ($) exit
+Example:
+$ ./hsh
+($) ls
+($) exit
 
        Non-Interactive Mode
               When standard input is not connected to a terminal, hsh
