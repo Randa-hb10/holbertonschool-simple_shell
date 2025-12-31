@@ -180,7 +180,7 @@ Write clean, readable, and well-structured code that passes all Betty coding sty
 - No arguments are handled
 
 
-⚠️ Error Handling
+## ⚠️ Error Handling
 
 The shell prints errors exactly like /bin/sh, except that the program name matches argv[0].
 
@@ -219,6 +219,8 @@ valgrind ./hsh
 ✔ signal
 
 ✔ And others specified in the project requirements
+
+---
 
 🏁 Conclusion
 
