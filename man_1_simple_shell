@@ -1,20 +1,20 @@
-HSH(1)                     Simple Shell Manual                     HSH(1)
+Simple Shell Manual  
 
 NAME
-       hsh - a simple UNIX command line interpreter
+hsh - a simple UNIX command line interpreter
 
 SYNOPSIS
-       ./hsh
+./hsh
 
 DESCRIPTION
-       hsh is a simple UNIX command line interpreter written in C.
-       It executes commands read from standard input using system calls.
+hsh is a simple UNIX command line interpreter written in C.
+ It executes commands read from standard input using system calls.
 
-       The shell supports both interactive and non-interactive modes and
-       mimics the basic behavior of /bin/sh.
+The shell supports both interactive and non-interactive modes and
+ mimics the basic behavior of /bin/sh.
 
-       This project was developed as part of the Holberton School
-       curriculum.
+ This project was developed as part of the Holberton School
+curriculum.
 
 MODES
        Interactive Mode
