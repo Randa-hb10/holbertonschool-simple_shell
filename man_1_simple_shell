@@ -81,21 +81,21 @@ Handles input parsing and tokenization.
 executor.c
 esponsible for process creation and command execution.
 
-       path.c
-              Handles PATH resolution and command lookup.
+path.c
+Handles PATH resolution and command lookup.
 
-       string_function.c
-              Contains custom string helper functions.
+string_function.c
+Contains custom string helper functions.
 
-       utils.c
-              General utility helper functions.
+utils.c
+General utility helper functions.
 
-       shell.h
-              Header file containing function prototypes and macros.
+shell.h
+Header file containing function prototypes and macros.
 
 EXIT STATUS
-       0      Successful execution.
-       >0     An error occurred.
+0  Successful execution.
+>0  An error occurred.
 
 LIMITATIONS
 This version of the shell does not support:
@@ -106,5 +106,5 @@ This version of the shell does not support:
 - Environment built-in commands
 
 SEE ALSO
-       sh(1), bash(1), execve(2), fork(2), wait(2)
+sh(1), bash(1), execve(2), fork(2), wait(2)
 
